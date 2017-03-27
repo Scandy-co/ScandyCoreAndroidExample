@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:id="@+id/scan_controls"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/resolution_widget">
+
+        <TextView
+            android:text="resolution"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"/>
+
+        <SeekBar
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:max="2"
+            android:progress="2"
+            android:id="@+id/scan_resolution"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/size_widget"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:text="size in meters: "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scan_size_text"
+            android:layout_weight="1"
+            android:contentDescription="size in meters: "/>
+
+        <SeekBar
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="40"
+            android:progress="20"
+            android:id="@+id/scan_size"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        >
+
+        <ToggleButton
+            android:text="Preview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/preview_toggle"
+            android:layout_weight="1"
+            android:textOff="PREVIEW"
+            android:textOn="STOP"
+            android:checked="false"/>
+
+        <ToggleButton
+            android:text="scan_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scan_toggle"
+            android:layout_weight="1"
+            android:textOff="start"
+            android:textOn="stop"
+            android:checked="false"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:id="@+id/volume_actions"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:text="Mesh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/mesh"
+            android:layout_weight="1"/>
+
+        <Button
+            android:text="Save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/save"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
