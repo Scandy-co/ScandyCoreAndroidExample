@@ -6,22 +6,21 @@
         <item
             android:id="@+id/initialize_button"
             android:icon="@android:drawable/ic_lock_power_off"
-            android:title="Initialize"/>
-        <item
-            android:id="@+id/preview_button"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Preview"/>
+            android:title="Initialize"
+            android:visible="false"/>
         <item
             android:id="@+id/loadmesh_button"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Load mesh"/>
+            android:title="Load mesh"
+            android:visible="false"/>
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
             android:title="Tools"/>
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Communicate"
+          android:visible="false">
         <menu>
             <item
                 android:id="@+id/nav_share"
