@@ -41,3 +41,6 @@ captures/
 
 # Mac cruft
 .DS_STORE
+
+# Scandy Core
+scandycoreandroid/
