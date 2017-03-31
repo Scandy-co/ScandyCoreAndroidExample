@@ -26,6 +26,8 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -240,9 +242,40 @@ public class MainActivity extends AppCompatActivity
     enableScanMode( ScandyCoreFileUtilities.hasStoragePermission() );
   }
 
+
+  /**
+   * Helper function to read a string from a file in the assets directory
+   * @param inFile The name of the file in the assets directory
+   * @return       The contents of the file as a String
+   */
+  public String readStringFromAssetsFile(String inFile) {
+    String tContents = "";
+
+    try {
+      InputStream stream = getAssets().open(inFile);
+
+      int size = stream.available();
+      byte[] buffer = new byte[size];
+      stream.read(buffer);
+      stream.close();
+      tContents = new String(buffer);
+    } catch (IOException e) {
+      // Handle exceptions here
+      Log.e(TAG, e.getMessage());
+    }
+
+    return tContents;
+
+  }
+
   private void enableScanMode(boolean enable_scanning) {
     if( enable_scanning ) {
       ((FloatingActionButton) findViewById(R.id.storage_permission_fab)).setVisibility(View.GONE);
+      /**
+       * Now that we file permissions let's read the license file from App Cache and send it to Scandy Core
+       */
+      String license = readStringFromAssetsFile("scandycore_license.json");
+      ScandyCore.setLicense(license);
     } else {
       ((FloatingActionButton) findViewById(R.id.storage_permission_fab)).setVisibility(View.VISIBLE);
     }
