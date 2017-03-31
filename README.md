@@ -83,6 +83,10 @@ Largely pulled this how from [Android Studio docs](https://developer.android.com
         ```
 * Sync Project with Gradle Files
 
+## Step 4: Add your license
+
+Update the contents of `app/src/main/assets/scandycore_license.json` with your license JSON.
+
 # Building, Running, and Installing
 
 * Click the big green arrow!
