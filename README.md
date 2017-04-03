@@ -6,7 +6,7 @@ This sample uses ScandyCore to download a mesh and present it the viewer.
 # Setup
 ## Step 1: Install Android Studio
 
-* install [Android Studio](https://developer.android.com/studio/index.html)
+* Install [Android Studio](https://developer.android.com/studio/index.html)
   * if you're on Mac and have [`brew`](http://brew.sh/):
 
         ```bash
