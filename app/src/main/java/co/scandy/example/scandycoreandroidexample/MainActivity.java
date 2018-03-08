@@ -45,6 +45,7 @@ import co.scandy.scandycore.ScanResolution;
 import co.scandy.scandycore.ScandyCore;
 import co.scandy.scandycore.ScandyCoreFileUtilities;
 import co.scandy.scandycore.ScandyCoreListener;
+import co.scandy.scandycore.TrackedMetadata;
 
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
@@ -200,6 +201,16 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onFinishedQuit(boolean successfully_quit) {
 
+    }
+  
+    @Override
+    public void onTrackingDidUpdate(TrackedMetadata trackedMetadata) {
+    
+    }
+  
+    @Override
+    public void onFinishedSavingScreenShot(boolean b) {
+    
     }
   };
 
