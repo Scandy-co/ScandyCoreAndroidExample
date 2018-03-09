@@ -65,10 +65,7 @@ public class MainActivity extends AppCompatActivity
   // mScanToggle and mPreviewToggle control the preview and scan state of Scandy Core
   private ToggleButton mScanToggle;
   private ToggleButton mPreviewToggle;
-
-  // mHasPicoFlexx keeps track of whether a pico flexx has been connected
-  private boolean mHasPicoFlexx;
-
+  
   // mListener binds all the callback events that Scandy Core emits
   private final ScandyCoreListener mListener = new ScandyCoreListener() {
     @Override
@@ -78,14 +75,10 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onConnectedUSBScanner(boolean did_connect_usb_sensor) {
-      // Set whether there is a pico flexx to be did_connect_usb_sensor
-      mHasPicoFlexx = did_connect_usb_sensor;
     }
 
     @Override
     public void onDisconnectedUSBScanner(boolean did_disconnect_usb_sensor) {
-      // Set whether there is a pico flexx to be opposite of did_disconnect_usb_sensor
-      mHasPicoFlexx = !did_disconnect_usb_sensor;
     }
 
     @Override
@@ -261,6 +254,15 @@ public class MainActivity extends AppCompatActivity
 
     // Check to see if we can enable scanning
     enableScanMode( ScandyCoreFileUtilities.hasStoragePermission() );
+    
+    ScandyCore.resume();
+  }
+  
+  @Override
+  public void onPause(){
+    super.onPause();
+    
+    ScandyCore.pause();
   }
 
 
@@ -490,15 +492,18 @@ public class MainActivity extends AppCompatActivity
         }
       }
 
-      // check to see if we have a file or pico flexx
-      if( rrf_path == "" && !mHasPicoFlexx ) {
+      // check to see if we have a USB sensor attached
+      if( ScandyCore.hasValidSensor() ) {
+        ScandyCore.initializeScanner();
+      }
+      else if( rrf_path != "" ) {
+        ScandyCore.initializeScanner(rrf_path);
+      } else {
         // Show an Alert that we didn't find anything to initialize a scanner with
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle("No scanner found");
         alertDialog.setMessage("Didn't find a pico flexx or a pre-recorded file.");
         alertDialog.show();
-      } else {
-        ScandyCore.initializeScanner(rrf_path);
       }
 
     } else if (id == R.id.loadmesh_button) {
